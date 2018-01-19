@@ -13,9 +13,10 @@ def home():
     if not session.get('logged_in'):
         return render_template('login.html', error=error)
     else:
-        return "Hello Boss!  <a href='/logout'>Logout</a>"
+        return render_template('home.html')
+        # "Hello Boss!  <a href='/logout'>Logout</a>"
  
-@app.route('/login', methods=['POST'])
+@app.route('/login', methods=['POST', 'GET'])
 def do_admin_login():
     global error
 
