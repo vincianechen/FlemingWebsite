@@ -42,7 +42,11 @@
               <a class="nav-link js-scroll-trigger" href="#download">Download</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="/login">Log In</a>
+            {% if session['logged_in'] %}
+              <a href="{{ url_for('logout') }}" class="nav-link js-scroll-trigger">Log Out</a>
+            {% else %}
+              <a href="{{ url_for('do_admin_login') }}" class="nav-link js-scroll-trigger">Log In</a>
+            {% endif %}
             </li>
           </ul>
         </div>

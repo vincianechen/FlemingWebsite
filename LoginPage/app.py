@@ -1,5 +1,5 @@
 from flask import Flask
-from flask import Flask, flash, redirect, render_template, request, session, abort
+from flask import Flask, flash, redirect, render_template, request, session, abort, url_for
 import os
 from sqlalchemy.orm import sessionmaker
 from tabledef import *
@@ -10,30 +10,29 @@ error = None
  
 @app.route('/')
 def home():
-    if not session.get('logged_in'):
-        return render_template('login.html', error=error)
-    else:
-        return render_template('home.html')
-        # "Hello Boss!  <a href='/logout'>Logout</a>"
+    return render_template('home.html')
  
-@app.route('/login', methods=['POST', 'GET'])
+@app.route('/login', methods=['GET', 'POST'])
 def do_admin_login():
     global error
 
-    POST_USERNAME = str(request.form['username'])
-    POST_PASSWORD = str(request.form['password'])
+    if request.method == 'POST':
+        POST_USERNAME = str(request.form['username'])
+        POST_PASSWORD = str(request.form['password'])
  
-    Session = sessionmaker(bind=engine)
-    s = Session()
-    query = s.query(User).filter(User.username.in_([POST_USERNAME]), User.password.in_([POST_PASSWORD]) )
-    result = query.first()
-    if result:
-        session['logged_in'] = True
-        error = None
-    else:
-        print ("FOUND ERROR")
-        error = "Invalid username or password. Try again."
-    return home()
+        Session = sessionmaker(bind=engine)
+        s = Session()
+        query = s.query(User).filter(User.username.in_([POST_USERNAME]), User.password.in_([POST_PASSWORD]) )
+        result = query.first()
+        if result:
+            session['logged_in'] = True
+            error = None
+        else:
+            print ("FOUND ERROR")
+            error = "Invalid username or password. Try again."
+        return home()
+    
+    return render_template('login.html', error=error)
  
 @app.route("/logout")
 def logout():
