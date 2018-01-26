@@ -34,14 +34,18 @@ def do_admin_login():
     
     return render_template('login.html', error=error)
  
-@app.route("/logout")
+@app.route('/logout')
 def logout():
     session['logged_in'] = False
     return home()
 
-@app.route("/calendar")
+@app.route('/calendar')
 def calendar():
     return render_template('calendar.html')
+
+@app.route('/leadership')
+def leadership():
+    return render_template('leadership.html')
  
 if __name__ == "__main__":
     app.secret_key = os.urandom(12)
