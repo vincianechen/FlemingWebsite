@@ -103,6 +103,15 @@ a {
   background-color: transparent;
 }
 
+.navbar-custom {
+  background-color: #222222;
+  border-color: transparent;
+}
+
+.fleming {
+  background-color: var(--fleming-red);
+}
+
 .card {
   background-color: white;
 }
@@ -114,10 +123,6 @@ a {
 .card-title {
   color: black;
   text-align: center;
-}
-
-.fleming {
-  background-color: var(--fleming-red);
 }
 
 .masthead {

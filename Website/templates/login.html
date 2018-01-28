@@ -1,16 +1,7 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 
-{% block body %}
-{% if session['logged_in'] %}
-<p>You're logged in already!</p>
-{% else %}
+{% block extra_head %}
 
-<html lang="en">
-<head>
-	<title>Fleming House</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="/static/Login/images/icons/favicon.ico"/>
 <!--===============================================================================================-->
@@ -33,8 +24,13 @@
 	<link rel="stylesheet" type="text/css" href="/static/Login/css/util.css">
 	<link rel="stylesheet" type="text/css" href="/static/Login/css/body.css">
 <!--===============================================================================================-->
-</head>
-<body>
+
+	<title> Log In </title>
+
+{% endblock %}
+
+{% block content %}
+
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
@@ -84,6 +80,10 @@
 		</div>
 	</div>
 
+{% endblock %}
+
+{% block extra %}
+
 <!--===============================================================================================-->
 	<script src="/static/Login/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
@@ -101,8 +101,4 @@
 <!--===============================================================================================-->
 	<script src="/static/Login/js/main.js"></script>
 
-</body>
-</html>
-
-{% endif %}
 {% endblock %}
