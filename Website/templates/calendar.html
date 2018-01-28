@@ -1,145 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-  <head>
+{% block extra_head %}
+  <link href='/static/Calendar/fullcalendar.min.css' rel='stylesheet' />
+  <link href='/static/Calendar/fullcalendar.print.min.css' rel='stylesheet' media='print' />
 
-    <meta charset='utf-8' />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" conetent="">
-    <meta name="author" content="">
+  <title> Calendar </title>
+{% endblock %}
 
-    <title>Fleming Calendar</title>
+{% block extra %}
 
-    <link href='/static/Calendar/fullcalendar.min.css' rel='stylesheet' />
-    <link href='/static/Calendar/fullcalendar.print.min.css' rel='stylesheet' media='print' />
+<!-- FullCalendar -->
 
-        <!-- Bootstrap core CSS -->
-    <link href="/static/Home/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="/static/Calendar/lib/jquery.min.js"></script>
+<script src="/static/Calendar/lib/moment.min.js"></script>
+<script src="/static/Calendar/fullcalendar.min.js"></script>
+<script src="/static/Calendar/gcal.js"></script>
+<script type='text/javascript'>
 
-    <!-- Custom fonts for this template -->
-    <link href="/static/Home/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
-
-    <!-- Custom styles for this template -->
-    <link href="/static/Home/css/grayscale.css" rel="stylesheet">
-
-  </head>
-
-  <body id="page-top">
-
-       <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-      <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">Fleming Hovse</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          Menu
-          <i class="fa fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="/leadership">Leadership</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="/calendar">Calendar</a>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="/gallery">Gallery</a>
-            </li>
-            <li class="nav-item">
-            {% if session['logged_in'] %}
-              <a href="{{ url_for('logout') }}" class="nav-link js-scroll-trigger">Log Out</a>
-            {% else %}
-              <a href="{{ url_for('do_admin_login') }}" class="nav-link js-scroll-trigger">Log In</a>
-            {% endif %}
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <script src='/static/Calendar/lib/moment.min.js'></script>
-    <script src='/static/Calendar/lib/jquery.min.js'></script>
-    <script src='/static/Calendar/fullcalendar.min.js'></script>
-    <script>
-
-      $(document).ready(function() {
-
+    $(document).ready(function() {
+    
         $('#calendar').fullCalendar({
-          header: {
-            left: 'prev,next today',
-            center: 'title',
-            right: 'month,agendaWeek,agendaDay,listWeek'
-          },
-          defaultDate: '2017-12-12',
-          navLinks: true, // can click day/week names to navigate views
-          editable: true,
-          eventLimit: true, // allow "more" link when too many events
-          events: [
-            {
-              title: 'All Day Event',
-              start: '2017-12-01',
+            // To create your own Google API key, follow the directions here:
+            // http://fullcalendar.io/docs/google_calendar/
+            googleCalendarApiKey: 'AIzaSyA0GLgOv7q7F_k3kvLBIEtH9NQX7vOPtMg', //socd calendar
+            // googleCalendarApiKey: 'AIzaSyA0FfmKEBMRmXh_Fuqn9-rA5putIv3Oj1w', //irene's calendar
+        
+            // US Holidays
+            //events: 'en.usa#holiday@group.v.calendar.google.com',
+            // substitute with lloyd's own public calendar
+            events: 'lloyd.sociald@gmail.com', //socd calendar
+            // events: 'v9s5qsmgem8eb721863ta6813k@group.calendar.google.com', //irene's calendar
+            eventClick: function(event) {
+                // opens events in a popup window
+                window.open(event.url, 'gcalevent', 'width=700,height=600');
+                return false;
             },
-            {
-              title: 'Long Event',
-              start: '2017-12-07',
-              end: '2017-12-10'
-            },
-            {
-              id: 999,
-              title: 'Repeating Event',
-              start: '2017-12-09T16:00:00'
-            },
-            {
-              id: 999,
-              title: 'Repeating Event',
-              start: '2017-12-16T16:00:00'
-            },
-            {
-              title: 'Conference',
-              start: '2017-12-11',
-              end: '2017-12-13'
-            },
-            {
-              title: 'Meeting',
-              start: '2017-12-12T10:30:00',
-              end: '2017-12-12T12:30:00'
-            },
-            {
-              title: 'Lunch',
-              start: '2017-12-12T12:00:00'
-            },
-            {
-              title: 'Meeting',
-              start: '2017-12-12T14:30:00'
-            },
-            {
-              title: 'Happy Hour',
-              start: '2017-12-12T17:30:00'
-            },
-            {
-              title: 'Dinner',
-              start: '2017-12-12T20:00:00'
-            },
-            {
-              title: 'Birthday Party',
-              start: '2017-12-13T07:00:00'
-            },
-            {
-              title: 'Click for Google',
-              url: 'http://google.com/',
-              start: '2017-12-28'
+            
+            loading: function(bool) {
+                $('#loading').toggle(bool);
             }
-          ]
         });
+    });
+</script>
 
-      });
-
-    </script>
 <style>
 
   body {
-    margin: 40px 10px;
+    margin: 150px 10px;
     padding: 0;
     font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
     font-size: 14px;
@@ -151,10 +58,24 @@
   }
 
 </style>
-</head>
-<body>
 
-  <div id='calendar'></div>
+<section id="calendar">
 
-</body>
-</html>
+  <div class="container">
+
+    <div id='loading'>loading...</div>
+    <div id='calendar'></div>
+
+  </div>
+
+</section>
+
+
+<footer>
+    <div class="container">
+
+    </div>
+</footer>
+
+{% endblock %}
+
