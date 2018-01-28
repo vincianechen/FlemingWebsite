@@ -2,7 +2,10 @@
   color: transparent;
 } */
 
-
+:root {
+  --fleming-red: #da0609; /* R: 218, G: 6, B: 9 */
+  --hover-red: #930609; /* R: 147, G: 6, B: 9 */
+}
 
 /*//////////////////////////////////////////////////////////////////
 [ FONT ]*/
@@ -421,7 +424,7 @@ input.input100 {
 }
 
 .login100-form-btn:hover {
-  background-color: #333333;
+  background-color: var(--hover-red);
 }
 
 

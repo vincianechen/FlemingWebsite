@@ -5,8 +5,8 @@
  */
 
 :root {
-  --fleming-red: #da0609;
-  --hover-red: blue;
+  --fleming-red: #da0609; /* R: 218, G: 6, B: 9 */
+  --hover-red: #930609; /* R: 147, G: 6, B: 9 */
 }
 
 body {
@@ -75,7 +75,7 @@ a {
     #mainNav .navbar-nav .nav-item:hover {
       color: fade(white, 80%);
       outline: none;
-      background-color: var(--fleming-red); }
+      background-color: var(--hover-red); }
     #mainNav .navbar-nav .nav-item:active, #mainNav .navbar-nav .nav-item:focus {
       outline: none;
       background-color: transparent; }
