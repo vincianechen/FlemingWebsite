@@ -46,6 +46,10 @@ def calendar():
 @app.route('/leadership')
 def leadership():
     return render_template('leadership.html')
+
+@app.route('/bylaws')
+def bylaws():
+    return render_template('bylaws.html')
  
 if __name__ == "__main__":
     app.secret_key = os.urandom(12)

@@ -8,8 +8,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Fleming Hovse</title>
-
     <!-- Bootstrap core CSS -->
     <link href="/static/Home/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -19,14 +17,17 @@
     <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
 
     <!-- Custom styles for this template -->
-    <link href="/static/Home/css/grayscale.css" rel="stylesheet">
+    <link href="/static/Home/css/grayscale.css" type="text/css" rel="stylesheet">
+
+    {% block extra_head %}
+    {% endblock %}
 
   </head>
 
   <body id="page-top">
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-home" id="mainNav">
+    <nav class="navbar fleming navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
         <a class="navbar-brand js-scroll-trigger" href="/">Fleming Hovse</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,12 +37,16 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="/leadership">Leadership</a>
+              <a class="nav-link" href="/leadership">Leadership</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="/calendar">Calendar</a>
+              <a class="nav-link" href="/calendar">Calendar</a>
+            </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="/gallery">Gallery</a>
+              <a class="nav-link" href="/gallery">Gallery</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/bylaws">Bylaws</a>
             </li>
             <li class="nav-item">
             {% if session['logged_in'] %}
@@ -55,38 +60,8 @@
       </div>
     </nav>
 
-    <!-- Intro Header -->
-    <header class="masthead">
-      <div class="intro-body">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-8 mx-auto">
-              <h1 class="brand-heading" style="position: relative; top: -140px;">Fleming</h1>
-              <p class="intro-text" style="position: relative; bottom: -140px;">Where men are men, giants walk the earth, <br/> and the <span class="intro-text" style="color:red; font-weight:bold; text-shadow: -1px 0 #000000, 1px 0 #000000, 0 1px #000000, 0 -1px #000000;"> thundering herd </span> is real.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-
-    <!-- About Section -->
-    <section id="about" class="content-section text-center">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 mx-auto">
-            <h2>About Fleming</h2>
-            <p>Fleming Hovse is one of the eight undergraduate houses at Caltech.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-      <div class="container text-center">
-        <p>Copyright &copy; Ayaana Sikora and Vinciane Chen 2018</p>
-      </div>
-    </footer>
+    {% block content %}
+    {% endblock %}
 
     <!-- Bootstrap core JavaScript -->
     <script src="/static/Home/vendor/jquery/jquery.min.js"></script>
@@ -99,7 +74,10 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
 
     <!-- Custom scripts for this template -->
-    <script src="/static/Home/js/grayscale.min.js"></script>
+    <script src="/static/Home/js/grayscale.js"></script>
+
+    {% block extra %}
+    {% endblock %}
 
   </body>
 
