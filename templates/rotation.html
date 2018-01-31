@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<nav>
+	<div class="row">
+
+  		<div class="col-sm-2" id="sidebar">
+	  		<div id="rotation_navigation">
+	  			<p>Rotation Home </p>
+	  			<p onclick = "openList('dinList');">Dinner</p>
+				<ul id="dinList" style="display: none;">
+				  <li><a href = "/exampleFolder/file1.txt">Dinner A</a></li>
+				  <li><a href = "/exampleFolder/file2.txt">Dinner B</a></li>
+				  <li><a href = "/exampleFolder/file3.txt">Dinner C</a></li>
+				  <li><a href = "/exampleFolder/file4.txt">Linner D</a></li>
+				  <li><a href = "/exampleFolder/file5.txt">Dinner E</a></li>
+				  <li><a href = "/exampleFolder/file5.txt">Linner F</a></li>
+				  <li><a href = "/exampleFolder/file5.txt">Dinner G</a></li>
+				  <li><a href = "/exampleFolder/file5.txt">Dinner H</a></li>
+				</ul>
+				<p onclick = "openList('desList');">Dessert</p>
+				<ul id="desList" style="display: none;">
+				  <li><a href = "/exampleFolder/file1.txt">Dessert 1</a></li>
+				  <li><a href = "/exampleFolder/file2.txt">Dessert 2</a></li>
+				  <li><a href = "/exampleFolder/file3.txt">Dessert 3</a></li>
+				  <li><a href = "/exampleFolder/file4.txt">Dessert 4</a></li>
+				  <li><a href = "/exampleFolder/file5.txt">Dessert 5</a></li>
+				  <li><a href = "/exampleFolder/file5.txt">Dessert 6</a></li>
+				  <li><a href = "/exampleFolder/file5.txt">Dessert 7</a></li>
+				</ul>
+				<p>Quicksort </p>
+			</div>
+  		</div>
+	</div>
+</nav>
+
+{% endblock %}
+
+{% block extra %}
+
+<script type="text/javascript">
+function openList(idVal) {
+    var list = document.getElementById(idVal);
+
+    if (list.style.display == "block"){
+        list.style.display = "none";
+    }else{
+        list.style.display = "block";
+    }
+}
+</script>
+
+<style>
+
+  body {
+    margin: 140px 10px 100px 100px;
+    padding: 0;
+    font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+    font-size: 14px;
+  }
+
+  #colored {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #000000;
+  }
+
+</style>
+
+{% endblock %}

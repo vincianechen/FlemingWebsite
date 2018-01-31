@@ -47,10 +47,10 @@ a {
   -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
-  color: #42DCA3; }
+  color: white; }
   a:focus, a:hover {
     text-decoration: none;
-    color: #1d9b6c; }
+    color: #000000; }
 
 #mainNav {
   font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -123,6 +123,20 @@ a {
 .card-title {
   color: black;
   text-align: center;
+}
+
+#rotation_navigation {
+  color: white;
+  margin: 20px;
+}
+
+#sidebar {
+  background: #da0609;
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
 }
 
 .masthead {

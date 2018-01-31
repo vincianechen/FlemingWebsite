@@ -48,13 +48,18 @@
             <li class="nav-item">
               <a class="nav-link" href="/bylaws">Bylaws</a>
             </li>
-            <li class="nav-item">
             {% if session['logged_in'] %}
-              <a href="{{ url_for('logout') }}" class="nav-link js-scroll-trigger">Log Out</a>
-            {% else %}
-              <a href="{{ url_for('do_admin_login') }}" class="nav-link js-scroll-trigger">Log In</a>
-            {% endif %}
+            <li class="nav-item">
+              <a class="nav-link" href="/rotation">Rotation</a>
             </li>
+            <li class="nav-item">
+              <a href="{{ url_for('logout') }}" class="nav-link js-scroll-trigger">Log Out</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a href="{{ url_for('do_admin_login') }}" class="nav-link js-scroll-trigger">Log In</a>
+            </li>
+            {% endif %}
           </ul>
         </div>
       </div>
