@@ -6,7 +6,7 @@
 
 :root {
   --fleming-red: #da0609; /* R: 218, G: 6, B: 9 */
-  --hover-red: #930609; /* R: 147, G: 6, B: 9 */
+  --hover-red: #930609;  /* R: 147, G: 6, B: 9 */
 }
 
 body {
@@ -266,3 +266,25 @@ img::-moz-selection {
 
 body {
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0.2); }
+
+
+div.gallery {
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 180px;
+}
+
+div.gallery:hover {
+    border: 1px solid #777;
+}
+
+div.gallery img {
+    width: 100%;
+    height: auto;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
+}

@@ -27,10 +27,10 @@ def do_admin_login():
         if result:
             session['logged_in'] = True
             error = None
-            return home()
         else:
             print ("FOUND ERROR")
             error = "Invalid username or password. Try again."
+        return home()
     
     return render_template('login.html', error=error)
  
@@ -43,21 +43,9 @@ def logout():
 def calendar():
     return render_template('calendar.html')
 
-@app.route('/gallery')
-def gallery():
-    return render_template('gallery.html')
-
 @app.route('/leadership')
 def leadership():
     return render_template('leadership.html')
-
-@app.route('/bylaws')
-def bylaws():
-    return render_template('bylaws.html')
-
-@app.route('/rotation')
-def rotation():
-    return render_template('rotation.html')
  
 if __name__ == "__main__":
     app.secret_key = os.urandom(12)
