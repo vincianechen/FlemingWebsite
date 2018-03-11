@@ -23,7 +23,9 @@ def do_admin_login():
         Session = sessionmaker(bind=engine)
         s = Session()
         query = s.query(User).filter(User.username.in_([POST_USERNAME]), User.password.in_([POST_PASSWORD]) )
+        print(query)
         result = query.first()
+        print(result)
         if result:
             session['logged_in'] = True
             error = None
@@ -55,9 +57,23 @@ def leadership():
 def bylaws():
     return render_template('bylaws.html')
 
+@app.route('/directory')
+def directory():
+    conn = engine.connect()
+    res = conn.execute("select * from users")
+    data = []
+    for row in res:
+        data.append([row['firstName'], row['lastName'], row['year'], row['major'], row['location'], row['email']])
+    conn.close()
+    return render_template('directory.html', data=data)
+
 @app.route('/rotation')
 def rotation():
     return render_template('rotation.html')
+
+@app.route('/dinner')
+def attendance():
+    return render_template('attendance.html', messages={'dinner': 'A'})
  
 if __name__ == "__main__":
     app.secret_key = os.urandom(12)

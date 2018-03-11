@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block extra_head %}
+  <title> Directory </title>
+  <link rel="stylesheet" type="text/css" href="/static/Directory/vendor/animate/animate.css">
+  <link rel="stylesheet" type="text/css" href="/static/Directory/vendor/select2/select2.min.css">
+  <link rel="stylesheet" type="text/css" href="/static/Directory/vendor/perfect-scrollbar/perfect-scrollbar.css">
+  <link rel="stylesheet" type="text/css" href="/static/Directory/css/util.css">
+  <link rel="stylesheet" type="text/css" href="/static/Directory/css/main.css">
+{% endblock %}
+
+{% block content %}
+
+<style>
+
+  body {
+    margin: 140px 10px;
+    padding: 0;
+    font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+  }
+
+</style>
+
+<div class="limiter">
+  <div class="container-table100">
+    <div class="wrap-table100">
+
+      <div class="table100 ver4 m-b-110">
+        <table data-vertable="ver4">
+          <thead>
+            <tr class="row100 head">
+              <th class="column100 column1" data-column="column1">First Name</th>
+              <th class="column100 column2" data-column="column2">Last Name</th>
+              <th class="column100 column3" data-column="column3">Year</th>
+              <th class="column100 column4" data-column="column4">Major</th>
+              <th class="column100 column5" data-column="column5">Location</th>
+              <th class="column100 column6" data-column="column6">Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            {% for row in data %}
+
+            <tr class="row100">
+              <td class="column100 column1" data-column="column1">{{row[0]}}</td>
+              <td class="column100 column2" data-column="column2">{{row[1]}}</td>
+              <td class="column100 column3" data-column="column3">{{row[2]}}</td>
+              <td class="column100 column4" data-column="column4">{{row[3]}}</td>
+              <td class="column100 column5" data-column="column5">{{row[4]}}</td>
+              <td class="column100 column6" data-column="column6">{{row[5]}}</td>
+            </tr>
+
+            {% endfor %}
+
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block extra %}
+
+<script src="/static/Directory/vendor/bootstrap/js/popper.js"></script>
+<script src="/static/Directory/vendor/select2/select2.min.js"></script>
+<script src="/static/Directory/js/main.js"></script>
+{% endblock %}

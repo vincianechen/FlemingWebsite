@@ -128,15 +128,12 @@ a {
 #rotation_navigation {
   color: white;
   margin: 20px;
+  padding: 10px;
 }
 
 #sidebar {
   background: #da0609;
-  position: relative;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
+  position: fixed;
 }
 
 .masthead {
