@@ -1,34 +1,28 @@
 {% extends 'rotation.html' %}
 
 {% block extra_head %}
-  <title> Dinner A </title>
+  <title> {{title}} </title>
   <link rel="stylesheet" href="/static/Home/css/lightbox.css">
 {% endblock %}
 
 {% block rotationBody %}
 
-<h3>Dinner A</h3>
+
+<h3>{{title}}</h3>
 
 <div>
-  <a class="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-3.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward."><img class="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-3.jpg" alt=""/></a>
-  <a class="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-4.jpg" data-lightbox="example-set" data-title="Or press the right arrow on your keyboard."><img class="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-4.jpg" alt="" /></a>
-  <a class="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-5.jpg" data-lightbox="example-set" data-title="The next image in the set is preloaded as you're viewing."><img class="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-5.jpg" alt="" /></a>
-  <a class="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-6.jpg" data-lightbox="example-set" data-title="Click anywhere outside the image or the X to the right to close."><img class="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-6.jpg" alt="" /></a>
+	<div class = "col-sm-9">
+		<div class="row">
+		{% for member in members %}
+			<div class="col-sm-3">
+				<div class="card">
+					<a class="example-image-link" href={{member[1]}} data-lightbox="example-set" data-title={{member[0]}}><img class="example-image card-img-top" src={{member[1]}} data-lightbox="image-1" data-title="My caption"></a>
+				</div>
+			</div>
+		{% endfor %}
+		</div>
+	</div>
 </div>
-
-<!-- <div>
-	<div class="row">
-		<div class="col-sm-3">
-	    	<div class="card">
-		      <a class="example-image-link" href="../static/Prefrosh/Abney, Nayla.JPG" data-lightbox="example-set" data-title="Nayla Abney"><img class="example-image" src="../static/Prefrosh/Abney, Nayla.JPG" alt=""/></a>
-		    </div>
-		</div>
-		<div class="col-sm-3">
-	    	<div class="card">
-		      <a class="example-image-link" href="../static/Prefrosh/Adams, Kasey Gregory.JPG" data-lightbox="example-set" data-title="Kasey Adams"><img class="example-image" src="../static/Prefrosh/Adams, Kasey Gregory.JPG" alt=""/></a>
-		    </div>
-		</div>
-</div> -->
 
 <script src="/static/Home/js/lightbox-plus-jquery.js"></script>
 

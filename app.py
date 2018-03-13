@@ -3,6 +3,7 @@ from flask import Flask, flash, redirect, render_template, request, session, abo
 import os
 from sqlalchemy.orm import sessionmaker
 from tabledef import *
+import schedule
 engine = create_engine('sqlite:///flemingMembers.db', echo=True)
  
 app = Flask(__name__)
@@ -71,9 +72,14 @@ def directory():
 def rotation():
     return render_template('rotation.html')
 
-@app.route('/dinner')
-def attendance():
-    return render_template('attendance.html', messages={'dinner': 'A'})
+@app.route('/attendance/<day>')
+def attendance(day=None):
+    title = ""
+    members = []
+
+    (title, members) = schedule.returnDayInfo(day)
+
+    return render_template('attendance.html', title=title, members=members)
  
 if __name__ == "__main__":
     app.secret_key = os.urandom(12)
