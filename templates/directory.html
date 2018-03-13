@@ -19,6 +19,10 @@
     font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
   }
 
+  a {
+    color: #808080;
+  }
+
 </style>
 
 <div class="limiter">
@@ -42,7 +46,7 @@
             {% for row in data %}
 
             <tr class="row100">
-              <td class="column100 column1" data-column="column1">{{row[0]}}</td>
+              <td class="column100 column1" data-column="column1"><a href="/profile/{{row[6]}}">{{row[0]}}</a></td>
               <td class="column100 column2" data-column="column2">{{row[1]}}</td>
               <td class="column100 column3" data-column="column3">{{row[2]}}</td>
               <td class="column100 column4" data-column="column4">{{row[3]}}</td>

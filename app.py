@@ -27,6 +27,7 @@ def do_admin_login():
         result = query.first()
         if result:
             session['logged_in'] = True
+            session['user'] = POST_USERNAME
             error = None
             return home()
         else:
@@ -59,16 +60,32 @@ def bylaws():
 
 @app.route('/directory')
 def directory():
-    if session['logged_in'] == False:
-        return render_template('home.html')
 
     conn = engine.connect()
     res = conn.execute("select * from users")
     data = []
     for row in res:
-        data.append([row['firstName'], row['lastName'], row['year'], row['major'], row['location'], row['email']])
+        data.append([row['firstName'], row['lastName'], row['year'], row['major'], row['location'], row['email'], row['id']])
     conn.close()
     return render_template('directory.html', data=data)
+
+@app.route('/profile/<ID>')
+def profile(ID=None):
+
+    conn = engine.connect()
+
+    if ID == None:
+        session['editable'] == True
+        ID = 1
+
+    query = "select * from users where id=" + str(ID)
+    res = conn.execute(query)
+    for row in res:
+        print row
+    conn.close()
+
+    return render_template('profile.html')
+
 
 @app.route('/rotation')
 def rotation():
@@ -94,7 +111,7 @@ def quicksort():
     if session['logged_in'] == False:
         return render_template('home.html')
 
-    
+
 if __name__ == "__main__":
     app.secret_key = os.urandom(12)
     app.run(debug=True,host='0.0.0.0', port=4000)
