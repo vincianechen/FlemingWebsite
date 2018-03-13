@@ -33,8 +33,30 @@
 
       <div id="back">
         <div class="back-info">
-          <p>Hello, I am Ayaana</p>
-        </div>
+          {% if edit %}
+            <form action="/profile/{{data[6]}}/update", method="POST">
+              First name: <br>
+              <input type="text" name="firstname" value={{data[0]}}> <br>
+              Last name: <br>
+              <input type="text" name="lastname" value={{data[1]}}> <br>
+              Year: <br>
+              <select name="year">
+                <option value="opt1">2018</option>
+                <option value="opt2">2019</option>
+                <option value="opt3">2020</option>
+                <option value="opt4">2021</option>
+              </select> <br>
+              Major: <br>
+              <input type="text" name="major" value={{data[3]}}><br>
+              Room Location: <br>
+              <input type="text" name="location" value={{data[4]}}><br>
+              Email: <br>
+              <input type="text" name="email" value={{data[5]}}><br>
+              <input type="submit" value="Submit">
+            </form> 
+          {% else %}
+            <p>Hello, I am Ayaana</p>
+          {% endif %}
         <div id="social-bar">
           <a href="http://donut.caltech.edu/directory/?state=details&inum=9662" target="_blank">
             <i class="fa fa-facebook"></i>
