@@ -30,6 +30,7 @@ def do_admin_login():
             error = None
             return home()
         else:
+            session['logged_in'] = False
             print ("FOUND ERROR")
             error = "Invalid username or password. Try again."
     
@@ -88,6 +89,12 @@ def attendance(day=None):
 
     return render_template('attendance.html', title=title, members=members)
  
+@app.route('/quicksort')
+def quicksort():
+    if session['logged_in'] == False:
+        return render_template('home.html')
+
+    
 if __name__ == "__main__":
     app.secret_key = os.urandom(12)
     app.run(debug=True,host='0.0.0.0', port=4000)

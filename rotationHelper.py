@@ -16,50 +16,55 @@ dessert5 = []
 dessert6 = []
 dessert7 = []
 
+allMembers = []
+
 def fillLists():
-	lst = []
+
 	with open('prefrosh2021.csv', 'rb') as csvfile:
 		reader = csv.reader(csvfile, delimiter=',')
-		next(reader)
+
 		for row in reader:
 			rep = ''.join(row)
 			if rep == '':
 				break
+			if 'PLEASE' not in rep and 'Dinner' not in rep:
+				
+				imgFile = "../static/Prefrosh/" + row[3] + row[1] + ".JPG"
+				prefrosh = [row[0], imgFile.replace(" ", "")]
 
-			imgFile = "../static/Prefrosh/" + row[3] + row[1] + ".JPG"
-			prefrosh = [row[0], imgFile.replace(" ", "")]
+				allMembers.append(prefrosh)
 
-			if 'Fleming' in row[4]:
-				dinnerA.append(prefrosh)
-			elif 'Fleming' in row[5]:
-				dinnerB.append(prefrosh)
-			elif 'Fleming' in row[6]:
-				dinnerC.append(prefrosh)
-			elif 'Fleming' in row[7]:
-				linnerD.append(prefrosh)
-			elif 'Fleming' in row[8]:
-				dinnerE.append(prefrosh)
-			elif 'Fleming' in row[9]:
-				linnerF.append(prefrosh)
-			elif 'Fleming' in row[10]:
-				dinnerG.append(prefrosh)
-			elif 'Fleming' in row[11]:
-				dinnerH.append(prefrosh)
+				if 'Fleming' in row[4]:
+					dinnerA.append(prefrosh)
+				elif 'Fleming' in row[5]:
+					dinnerB.append(prefrosh)
+				elif 'Fleming' in row[6]:
+					dinnerC.append(prefrosh)
+				elif 'Fleming' in row[7]:
+					linnerD.append(prefrosh)
+				elif 'Fleming' in row[8]:
+					dinnerE.append(prefrosh)
+				elif 'Fleming' in row[9]:
+					linnerF.append(prefrosh)
+				elif 'Fleming' in row[10]:
+					dinnerG.append(prefrosh)
+				elif 'Fleming' in row[11]:
+					dinnerH.append(prefrosh)
 
-			if 'Fleming' in row[14]:
-				dessert1.append(prefrosh)
-			elif 'Fleming' in row[15]:
-				dessert2.append(prefrosh)
-			elif 'Fleming' in row[16]:
-				dessert3.append(prefrosh)
-			elif 'Fleming' in row[17]:
-				dessert4.append(prefrosh)
-			elif 'Fleming' in row[18]:
-				dessert5.append(prefrosh)
-			elif 'Fleming' in row[19]:
-				dessert6.append(prefrosh)
-			elif 'Fleming' in row[20]:
-				dessert7.append(prefrosh)
+				if 'Fleming' in row[14]:
+					dessert1.append(prefrosh)
+				elif 'Fleming' in row[15]:
+					dessert2.append(prefrosh)
+				elif 'Fleming' in row[16]:
+					dessert3.append(prefrosh)
+				elif 'Fleming' in row[17]:
+					dessert4.append(prefrosh)
+				elif 'Fleming' in row[18]:
+					dessert5.append(prefrosh)
+				elif 'Fleming' in row[19]:
+					dessert6.append(prefrosh)
+				elif 'Fleming' in row[20]:
+					dessert7.append(prefrosh)
 
 fillLists()
 print "dinnerA"
@@ -107,3 +112,6 @@ print dessert6
 print "\ndessert7"
 print dessert7
 
+print "\nallMembers"
+print allMembers
+print len(allMembers)
