@@ -1,0 +1,26 @@
+{% extends 'rotation.html' %}
+
+{% block extra_head %}
+  <title> Rotation </title>
+  <link rel="stylesheet" href="/static/Home/css/lightbox.css">
+{% endblock %}
+
+{% block rotationBody %}
+
+<style>
+ h3 {
+ 	color: red;
+ }
+</style>
+
+<h3>Welcome to Rotation</h3>
+
+<div>
+	<div class = "col-sm-9">
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/IN-71StvrvM?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+	</div>
+</div>
+
+<script src="/static/Home/js/lightbox-plus-jquery.js"></script>
+
+{% endblock %}

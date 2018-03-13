@@ -74,13 +74,13 @@ def rotation():
     if session['logged_in'] == False:
         return render_template('home.html')
 
-    return render_template('rotation.html')
+    return render_template('rotationHome.html')
 
 @app.route('/attendance/<day>')
 def attendance(day=None):
     if session['logged_in'] == False:
         return render_template('home.html')
-        
+
     title = ""
     members = []
 
