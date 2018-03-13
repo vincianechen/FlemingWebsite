@@ -24,9 +24,7 @@ def do_admin_login():
         Session = sessionmaker(bind=engine)
         s = Session()
         query = s.query(User).filter(User.username.in_([POST_USERNAME]), User.password.in_([POST_PASSWORD]) )
-        print(query)
         result = query.first()
-        print(result)
         if result:
             session['logged_in'] = True
             error = None
@@ -60,6 +58,9 @@ def bylaws():
 
 @app.route('/directory')
 def directory():
+    if session['logged_in'] == False:
+        return render_template('home.html')
+
     conn = engine.connect()
     res = conn.execute("select * from users")
     data = []
@@ -70,10 +71,16 @@ def directory():
 
 @app.route('/rotation')
 def rotation():
+    if session['logged_in'] == False:
+        return render_template('home.html')
+
     return render_template('rotation.html')
 
 @app.route('/attendance/<day>')
 def attendance(day=None):
+    if session['logged_in'] == False:
+        return render_template('home.html')
+        
     title = ""
     members = []
 
